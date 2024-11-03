@@ -1,0 +1,28 @@
+# Creating the QuizBrain class
+class QuizBrain:
+    def __init__(self, q_list):
+        self.question_number = 0
+        self.score = 0
+        self.question_list = q_list
+    # Creating a method to find ask the next question
+    def next_question(self):
+        current_question = self.question_list[self.question_number]
+        self.question_number += 1
+        user_answer = input(f"Q.{self.question_number}: {current_question.text} (True/False): ")
+        self.check_answer(user_answer, current_question.answer)
+
+    # Checking to see if there are still questions in the problem list
+    def still_has_questions(self):
+        return self.question_number < len(self.question_list)
+
+    # Creating a function to check the answer and keep track of the users score
+    def check_answer(self, user_answer, correct_answer):
+        if user_answer.lower() == correct_answer.lower():
+            self.score +=1
+            print("Correct!")
+            print(f"The correct answer was {correct_answer}.")
+            print(f"Your current score is {self.score}/{self.question_number} which is {self.score/self.question_number * 100}%")
+        else:
+            print("Incorrect!")
+            print(f"The correct answer was {correct_answer}.")
+            print(f"Your current score is {self.score}/{self.question_number} which is {self.score/self.question_number * 100}%")
