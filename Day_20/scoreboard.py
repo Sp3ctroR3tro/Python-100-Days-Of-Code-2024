@@ -10,6 +10,7 @@ class Scoreboard(Turtle):
         self.penup()
         self.goto(0, 270)
         self.score = 0
+        self.highscore = 0
         self.hideturtle()
         self.update_scoreboard()
 
@@ -17,7 +18,7 @@ class Scoreboard(Turtle):
     # Update the scoreboard with the current score and the highscore
     def update_scoreboard(self):
         self.clear()
-        self.write(f"Score: {self.score}", align="center", font=("Courier", 24, "normal"))
+        self.write(f"Score: {self.score} High Score:{self.highscore}", align="center", font=("Courier", 24, "normal"))
 
 
     # Reset the score at the start of each new run
@@ -30,8 +31,14 @@ class Scoreboard(Turtle):
         self.score += 1
         self.update_scoreboard()
 
+    # Increase the highscore each time the user score beats the highscore
+    def increase_highscore(self):
+        if self.score > self.highscore:
+            self.highscore = self.score
+        self.update_scoreboard()
 
     # Creating the game over function
     def game_over(self):
+        self.increase_highscore()
         self.goto(0, 0)
         self.write("GAME OVER", align="center", font=("Courier", 24, "normal"))

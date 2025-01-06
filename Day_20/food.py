@@ -16,3 +16,10 @@ class Food(Turtle):
     # Generate a new random location for the food to populate
     def refresh(self):
         self.goto(random.randint(-280, 280), random.randint(-280, 280))
+
+    # Check to see if the snakes body on top of the food spawn point
+    def check_collision(self, snake):
+        for segment in snake.snake_segments:
+            if self.distance(segment) < 20:
+                self.refresh()
+                self.check_collision(snake)
