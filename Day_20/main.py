@@ -18,8 +18,6 @@ def setup_screen():
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
-
-game_on = True
 screen = setup_screen()
 
 # Key bindings for directional movement
@@ -29,6 +27,7 @@ screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
 
+game_on = True
 while game_on is True:
     screen.update() # Update the screen once per loop
     time.sleep(0.1) # Control game loop speed
