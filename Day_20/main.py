@@ -34,6 +34,7 @@ while game_on is True:
     time.sleep(0.1) # Control game loop speed
     snake.move_snake() # Calling movement function for snake
 
+
     # Detect collision with food
     if snake.head.distance(food) < 17:
         food.refresh()
@@ -51,8 +52,6 @@ while game_on is True:
         if snake.head.distance(segment) < 10:
             game_on = False
             scoreboard.game_over()
-
-
 
 
 
